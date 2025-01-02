@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .floating-badge {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 50px; /* Reduced width */
+      height: 50px; /* Reduced height */
+      background-color: #ff6600;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+      z-index: 9999;
+      animation: bounceIn 1s ease-out; /* Initial animation for the badge */
+    }
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .badge-content {
+      display: block;
+      position: absolute;
+      bottom: 70px; /* Adjusted bottom position */
+      left: 0;
+      width: 200px; /* Adjusted width */
+      background: white;
+      color: black;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 10px; /* Reduced padding */
+      text-align: center;
+      animation: fadeInUp 0.5s ease-out; /* Animation for the content */
+    }
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .badge-image {
+      display: none;
+      width: 100%;
+      height: auto;
+      max-height: 80px; /* Adjusted max height */
+      border-radius: 10px;
+      margin-top: 10px;
+      animation: fadeIn 0.5s ease-out; /* Animation for the image */
+    }
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .badge-close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      padding: 2px 5px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .badge-close-btn:hover {
+      background-color: rgba(255, 0, 0, 0.7);
+    }
+    .badge-content h2 {
+      margin: 10px 0 5px;
+      font-size: 16px; /* Reduced font size for the heading */
+      color: #ff6600; /* Matching color with the badge */
+    }
+    .badge-content p {
+      margin: 0;
+      font-size: 12px; /* Reduced font size for the paragraph */
+    }
+    .cta-button {
+      margin-top: 8px; /* Reduced margin */
+      background-color: #ff6600; /* Button color */
+      color: white;
+      border: none;
+      padding: 6px 10px; /* Reduced padding */
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 12px; /* Reduced font size */
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #cc5200; /* Darker shade on hover */
+    }
+    .countdown {
+      font-size: 14px;
+      color: red;
+      margin-top: 10px;
+    }
+    .product-img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    .product-description {
+      font-size: 12px;
+      color: #333;
+      margin-top: 5px;
+    }
+  </style>
+  <script>
+    function closeBadge(event) {
+      event.stopPropagation(); // Prevents triggering other click events
+      const badgeElement = document.getElementById('floatingBadge');
+      badgeElement.style.opacity = '0';
+      badgeElement.style.transform = 'translateY(20px)';
+      setTimeout(() => badgeElement.remove(), 500); // Remove element after transition
+    }
+
+    function reloadPage(event) {
+      event.stopPropagation(); // Prevents triggering other click events
+      location.reload(); // Reload the current page
+    }
+
+    function startCountdown() {
+      const countdownElement = document.getElementById('countdown');
+      let time = 600; // 10 minutes in seconds
+      setInterval(() => {
+        if (time <= 0) {
+          countdownElement.innerHTML = "Sale ended!";
+          clearInterval();
+        } else {
+          const minutes = Math.floor(time / 60);
+          const seconds = time % 60;
+          countdownElement.innerHTML = `Sale ends in: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+          time--;
+        }
+      }, 1000);
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        document.querySelector('.badge-image').style.display = 'block';
+      }, 3000); // Delay for 3 seconds before showing the image
+      startCountdown(); // Start countdown timer
+    }
+  </script>
+</head>
+<body>
+
+<div class="floating-badge" id="floatingBadge">
+  <div class="badge-content">
+    <button class="badge-close-btn" onclick="closeBadge(event)">×</button>
+    <h2>Special Offer</h2>
+    <p>Get 30% off on your first purchase. Limited time offer!</p>
+    <img class="product-img" src="https://img.freepik.com/free-photo/fries-ketchup_144627-31956.jpg" alt="Sale Product">
+    <p class="product-description">Delicious French fries with ketchup. Perfect for your snack cravings!</p>
+    <div id="countdown" class="countdown">Sale ends in: 10:00</div>
+    <button class="cta-button" onclick="reloadPage(event)">Shop Now</button>
+    <img class="badge-image" src="https://img.freepik.com/premium-vector/sale-banner-design-template-discount-sale_106760-25.jpg" alt="Special Offer">
+  </div>
+  <span>!</span>
+</div>
+
+</body>
+</html>

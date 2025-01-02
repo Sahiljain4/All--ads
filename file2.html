@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .corner-ad {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 200px; /* Reduced the width */
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: slideIn 0.5s ease-in-out;
+      z-index: 9999;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .corner-ad:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .corner-ad img {
+      width: 85%; /* Further reduced the width of the image */
+      margin: 10px auto;
+      display: block;
+      border-bottom: 1px solid #ddd;
+      background-size: contain;
+    }
+    .corner-ad-content {
+      padding: 12px; /* Adjusted padding */
+      text-align: center;
+    }
+    .corner-ad-content h2 {
+      margin: 0;
+      font-size: 16px; /* Adjusted the font size */
+      color: #ff4d4d; /* Changed to attract attention */
+      font-weight: bold;
+    }
+    .corner-ad-content p {
+      margin: 8px 0; /* Adjusted margin */
+      font-size: 12px; /* Slightly adjusted the font size */
+      color: #333;
+    }
+    .corner-ad-content a {
+      display: inline-block;
+      padding: 8px 16px; /* Adjusted padding */
+      background-color: #ff4d4d; /* Changed to a striking color */
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 12px; /* Adjusted the font size */
+      margin-top: 8px; /* Adjusted margin */
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .corner-ad-content a i {
+      margin-right: 5px;
+    }
+    .corner-ad-content a:hover {
+      background-color: #e60000;
+      transform: translateY(-2px);
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 12px; /* Adjusted the font size */
+      line-height: 1;
+      transition: background-color 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #e60000;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+  </style>
+  <script>
+    function closeAd() {
+      document.getElementById('corner-ad').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+
+<div id="corner-ad" class="corner-ad">
+  <button class="close-btn" onclick="closeAd()">×</button>
+  <img src="https://img.freepik.com/free-vector/fast-food-meal-vector-illustration_1308-167988.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Fast Food Offer">
+  <div class="corner-ad-content">
+    <h2>Special Offer</h2>
+    <p>Get 20% off on your first purchase.</p>
+    <a href="#"><i class="fa fa-shopping-cart"></i> Shop Now</a>
+  </div>
+</div>
+
+</body>
+</html>

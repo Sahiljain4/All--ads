@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .floating-ad {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 200px; /* Reduced the width */
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      z-index: 9999;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .floating-ad:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .floating-ad img {
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+    }
+    .floating-ad-content {
+      padding: 12px; /* Adjusted padding */
+      text-align: center;
+    }
+    .floating-ad-content h2 {
+      margin: 0;
+      font-size: 14px; /* Reduced the font size */
+      color: #333;
+    }
+    .floating-ad-content p {
+      margin: 8px 0; /* Adjusted margin */
+      font-size: 10px; /* Reduced the font size */
+      color: #666;
+    }
+    .floating-ad-content a {
+      display: inline-block;
+      padding: 8px 16px; /* Adjusted padding */
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 12px; /* Reduced the font size */
+      margin-top: 8px; /* Adjusted margin */
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .floating-ad-content a i {
+      margin-right: 5px;
+    }
+    .floating-ad-content a:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 14px; /* Reduced the font size */
+      line-height: 1;
+      transition: background-color 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #e60000;
+    }
+  </style>
+  <script>
+    function closeAd() {
+      document.getElementById('floating-ad').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+
+<div id="floating-ad" class="floating-ad">
+  <button class="close-btn" onclick="closeAd()">×</button>
+  <img src="https://img.freepik.com/premium-photo/group-french-fries-red-carton-boxes-closeup-isolated-white-background_627281-2083.jpg?w=826" alt="Ad Image">
+  <div class="floating-ad-content">
+    <h2>Limited Time Deal</h2>
+    <p>Save 30% on selected items.</p>
+    <a href="#"><i class="fa fa-shopping-cart"></i> Shop Now</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .floating-btn-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      max-height: 80vh;
+      width: 300px; /* Reduced width */
+      overflow-y: auto;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-right: 10px;
+    }
+    .ad-content {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px; /* Reduced padding */
+      transition: background-color 0.3s, opacity 0.5s ease, transform 0.5s ease;
+      position: relative;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: slideIn 0.5s forwards;
+    }
+    .ad-content:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+    .ad-content:nth-child(2) {
+      animation-delay: 1s;
+    }
+    .ad-content:nth-child(3) {
+      animation-delay: 1.5s;
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .badge-img {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    .product-img {
+      width: 70px; /* Adjusted width */
+      height: auto;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+    .ad-details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+    }
+    .ad-details p {
+      margin: 0;
+      font-size: 13px; /* Adjusted font size */
+      color: #333;
+    }
+    .ad-details .ad-title {
+      font-size: 15px; /* Adjusted font size */
+      font-weight: bold;
+      color: #000;
+    }
+    .floating-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 6px 12px; /* Reduced padding */
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: pulse 1.5s infinite;
+      width: auto;
+      box-sizing: border-box;
+    }
+    .floating-btn i {
+      font-size: 18px;
+    }
+    .floating-btn:hover {
+      background-color: #218838;
+      transform: scale(1.1);
+    }
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #e9dede;
+      color: black;
+      border: none;
+      padding: 4px 7px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 18px;
+      line-height: 1;
+      transition: background-color 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #d3d3d3;
+    }
+    .floating-btn-container::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+  <script>
+    function closeAd(id) {
+      const adElement = document.getElementById(id);
+      adElement.style.opacity = '0';
+      adElement.style.transform = 'translateY(20px)';
+      setTimeout(() => adElement.style.display = 'none', 500);
+    }
+  </script>
+</head>
+<body>
+
+<div id="floating-ad-container" class="floating-btn-container">
+  <div id="ad1" class="ad-content">
+    <img src="./assets/ribbon.png" alt="Badge 1" class="badge-img">
+    <button class="close-btn" onclick="closeAd('ad1')">×</button>
+    <img src="https://img.freepik.com/free-vector/3d-french-fries-paper-box-isolated-background_107791-18370.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product 1" class="product-img">
+    <div class="ad-details">
+      <p class="ad-title">Limited Time Offer</p>
+      <p>Get 30% Off on French Fries!</p>
+      <button class="floating-btn">
+        <i class="fa fa-shopping-cart"></i> Shop Now
+      </button>
+    </div>
+  </div>
+  <div id="ad2" class="ad-content">
+    <img src="./assets/ribbon.png" alt="Badge 2" class="badge-img">
+    <button class="close-btn" onclick="closeAd('ad2')">×</button>
+    <img src="https://img.freepik.com/premium-vector/vector-menu-illustration-food-meat-meal-restaurant-popular-set-lunch-icon-dinner-snack_1013341-43452.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product 2" class="product-img">
+    <div class="ad-details">
+      <p class="ad-title">New Arrivals</p>
+      <p>Fresh and Delicious Options!</p>
+      <button class="floating-btn">
+        <i class="fa fa-shopping-cart"></i> Shop Now
+      </button>
+    </div>
+  </div>
+  <div id="ad3" class="ad-content">
+    <img src="./assets/ribbon.png" alt="Badge 3" class="badge-img">
+    <button class="close-btn" onclick="closeAd('ad3')">×</button>
+    <img src="https://img.freepik.com/premium-vector/vector-menu-illustration-food-meat-meal-restaurant-popular-set-lunch-icon-dinner-snack_1013341-43452.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product 3" class="product-img">
+    <div class="ad-details">
+      <p class="ad-title">Subscribe & Save</p>
+      <p>Save 20% on your next meal!</p>
+      <button class="floating-btn">
+        <i class="fa fa-shopping-cart"></i> Shop Now
+      </button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Overlay Example</title>
+    <style>
+        /* Basic reset and layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        /* Main content */
+        #content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Ad Overlay container */
+        #ad-overlay {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            display: flex;
+            flex-direction: row; /* Change to row for left-right alignment */
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        /* Ad styles */
+        .ad {
+            width: 150px;
+            height: 100px;
+            display: none; /* Initially hide ads */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Close button */
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* Image styling */
+        .ad img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+   
+
+    <!-- Ad Overlay -->
+    <div id="ad-overlay">
+        <div id="ad1" class="ad">
+            <button class="close-btn" onclick="document.getElementById('ad1').style.display='none'">X</button>
+            <img src="https://cdn.pixabay.com/photo/2016/11/07/01/47/champagne-1804699_640.png" alt="Ad Image 1">
+        </div>
+        <div id="ad2" class="ad">
+            <button class="close-btn" onclick="document.getElementById('ad2').style.display='none'">X</button>
+            <img src="https://cdn.pixabay.com/photo/2023/02/28/01/50/qr-code-7819652_640.jpg" alt="Ad Image 2">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the ad elements
+            const ad1 = document.getElementById('ad1');
+            const ad2 = document.getElementById('ad2');
+
+            // Function to show the ad overlay and control the ad flow
+            setTimeout(() => {
+                ad1.style.display = 'flex';  // Show the first ad
+                setTimeout(() => {
+                    ad2.style.display = 'flex';  // Show the second ad
+                }, 2000);  // Show ad2 after 2 seconds
+            }, 2000);  // Delay before showing the first ad
+        });
+    </script>
+
+</body>
+</html>

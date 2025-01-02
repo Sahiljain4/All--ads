@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: transparent;
+    }
+    .flip-card {
+      background-color: transparent;
+      width: 300px;
+      height: 200px;
+      perspective: 1000px;
+      position: relative;
+      overflow: visible; /* Ensure overflow is visible */
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .flip-card-front {
+      background: white; /* White background */
+      border: 2px solid #9e9a9aa8; /* Added border */
+    }
+    .flip-card-front img {
+      width: 80%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .flip-card-back {
+      background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+      color: white;
+      transform: rotateY(180deg);
+    }
+    .flip-card-back h2 {
+      margin: 10px 0;
+    }
+    .flip-card a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #0056b3;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .flip-card a:hover {
+      background-color: #004494;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 14px;
+      z-index: 1;
+    }
+    .flip-card-inner .top-left-img {
+      position: absolute; /* Position absolute for top-left-img */
+      top: 15px; /* Adjusted distance from top to make it appear half outside */
+      left: 16rem; /* Adjusted distance from left to make it appear half outside */
+      width: auto; /* Adjusted size */
+      height: 10rem; /* Adjusted size */
+      border-radius: 10px; /* Added border-radius */
+      z-index: 3; /* Ensure it appears above other content */
+    }
+    .flip-card-inner .dot{
+      height: 10px;
+      width: 10px;
+      background-color: rgba(232, 70, 70, 0.677);
+      position: absolute;
+      top: 10px; 
+      left: 17rem; 
+      border-radius: 50%;
+      z-index: 2;
+      border: 2px solid rgb(129, 124, 124);
+    }
+  </style>
+  <script>
+    function closeFlipCard() {
+      document.getElementById('flip-card').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+
+<div id="flip-card" class="flip-card">
+  
+  <div class="flip-card-inner">
+    <div class="dot"></div>
+    <img src="./assets/logo.png" alt="logo" class="top-left-img"> <!-- Image inside the front box -->
+    <div class="flip-card-front">
+      <img src="https://img.freepik.com/premium-vector/burger-vector-icon-food-hamburger-illustration-fast-menu-restaurant-pizza-sandwich-lunch_1013341-35929.jpg?w=740" alt="Burger"> <!-- Image inside the front box -->
+    </div>
+    <div class="flip-card-back">
+      <button class="close-btn" onclick="closeFlipCard()">×</button>
+      <h2>Exclusive Discount</h2>
+      <p>Use Code: SAVE20</p>
+      <a href="#">Shop Now</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .corner-notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 280px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: slideIn 0.5s ease-in-out;
+      z-index: 9999;
+      display: flex;
+      flex-direction: row;
+    }
+    .notification-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .notification-content h2 {
+      margin: 0;
+      font-size: 16px;
+      color: #ff4d4d;
+      font-weight: bold;
+    }
+    .notification-content p {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #333;
+    }
+    .notification-content a {
+      align-self: flex-start;
+      padding: 8px 16px;
+      background-color: #ff4d4d;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 14px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .notification-content a:hover {
+      background-color: #e60000;
+      transform: translateY(-2px);
+    }
+    .notification-image {
+      flex: 0 0 100px;
+      background: url('https://img.freepik.com/premium-vector/realistic-coffee-glass-cup-hot-latte-drink-coffee-time-concept-vertical_48369-42650.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid') center/cover no-repeat;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 3px 6px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 14px;
+      line-height: 1;
+      transition: background-color 0.3s;
+    }
+    .close-btn:hover {
+      background-color: #e60000;
+    }
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+  </style>
+  <script>
+    function closeNotification() {
+      document.getElementById('corner-notification').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+
+<div id="corner-notification" class="corner-notification">
+  <button class="close-btn" onclick="closeNotification()">×</button>
+  <div class="notification-image"></div>
+  <div class="notification-content">
+    <h2>Exclusive Deal</h2>
+    <p>Shop now and get 40% off!</p>
+    <a href="#">Shop Now</a>
+  </div>
+</div>
+
+</body>
+</html>

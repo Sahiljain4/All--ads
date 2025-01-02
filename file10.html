@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .banner-ad-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 900px; /* Responsive design */
+      background: linear-gradient(135deg, #e6e2e2bb, #d1cecd8b, #d5d2d193, #c4c0c199); /* Gradient background */
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for appearance and disappearance */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(-50%) translateY(20px); /* Initially offset */
+    }
+    .banner-ad-container.show {
+      opacity: 1; /* Visible */
+      transform: translateX(-50%) translateY(0); /* Default position */
+    }
+    .banner-ad-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .banner-ad-content img {
+      height: 80px;
+      margin-right: 20px;
+      border-radius: 5px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .banner-ad-content img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .banner-ad-text {
+      flex: 2;
+      color: #333; /* Dark text color for better contrast */
+    }
+    .banner-ad-text h1 {
+      margin: 0;
+      font-size: 22px; /* Adjusted font size */
+      color: #333; /* Dark text color */
+      line-height: 1.2;
+    }
+    .banner-ad-text p {
+      margin: 5px 0 0;
+      font-size: 16px; /* Adjusted font size */
+      color: #555; /* Medium dark text color */
+    }
+    .cta-button {
+      background-color: #ff6347; /* Tomato background color for button */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 14px; /* Adjusted font size */
+    }
+    .cta-button:hover {
+      background-color: #ff4500; /* Darker tomato color on hover */
+      transform: scale(1.05);
+    }
+    .close-button {
+      background-color: transparent;
+      color: #333; /* Dark color for close button */
+      border: none;
+      padding: 0px 4px;
+      cursor: pointer;
+      font-size: 28px; /* Adjusted font size */
+      position: absolute;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.739);
+      border-bottom-left-radius: 40%;
+      right: 0;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .close-button:hover {
+      color: #ff4500; /* Match close button hover color with CTA button hover */
+     
+    }
+  </style>
+  <script>
+    function closeAd() {
+      const adElement = document.getElementById('bannerAd');
+      adElement.classList.remove('show');
+      setTimeout(() => adElement.style.display = 'none', 500);
+    }
+
+    window.onload = () => {
+      const adElement = document.getElementById('bannerAd');
+      setTimeout(() => adElement.classList.add('show'), 100); // Delay for smooth appearance
+    }
+  </script>
+</head>
+<body>
+
+<div class="banner-ad-container" id="bannerAd">
+  <div class="banner-ad-content">
+    <img src="https://img.freepik.com/premium-vector/sausage-vector-hotdog-bread-food-illustration-mustard-hot-american-fast-bun-design-meat_1013341-33705.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product Image">
+    <div class="banner-ad-text">
+      <h1>Special Offer!</h1>
+      <p>Get 20% off on your first purchase. Limited time offer.</p>
+    </div>
+    <button class="cta-button" onclick="window.location.href='your-landing-page-url'">Shop Now</button>
+  </div>
+  <button class="close-button" onclick="closeAd()">×</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .floating-btn-container {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      transition: background-color 0.3s;
+      max-width: 350px; /* Limit the maximum width */
+    }
+    .product-img {
+      width: 100px; /* Larger width for better visibility */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+    .floating-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s, transform 0.3s;
+      animation: pulse 1.5s infinite;
+    }
+    .floating-btn i {
+      font-size: 20px;
+    }
+    .floating-btn:hover {
+      background-color: #218838;
+      transform: scale(1.1);
+    }
+    .tooltip {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      background-color: #fff;
+      color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s, opacity 0.3s;
+      white-space: nowrap;
+    }
+    .floating-btn:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+    .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #e9dede;
+      color: black;
+      border: none;
+      padding: 4px 6px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 14px;
+      line-height: 1;
+      transition: background-color 0.3s;
+    }
+  
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+  <script>
+    function closeAd() {
+      document.getElementById('floating-ad-container').style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+
+<div id="floating-ad-container" class="floating-btn-container">
+  <button class="close-btn" onclick="closeAd()">×</button>
+  <img src="https://img.freepik.com/free-vector/3d-french-fries-paper-box-isolated-background_107791-18370.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product" class="product-img">
+  <button class="floating-btn">
+    <i class="fa fa-shopping-cart"></i> Shop Now
+    <div class="tooltip">Limited Time Offer - 30% Off!</div>
+  </button>
+</div>
+
+</body>
+</html>
