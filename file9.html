@@ -3,183 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       background: transparent;
     }
-    .floating-btn-container {
+    .banner-ad-container {
       position: fixed;
       bottom: 20px;
-      right: 20px;
-      max-height: 80vh;
-      width: 300px; /* Reduced width */
-      overflow-y: auto;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      padding-right: 10px;
-    }
-    .ad-content {
-      display: flex;
-      align-items: center;
-      background-color: #fff;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      max-width: 900px; /* Responsive design */
+      background: linear-gradient(135deg, #e6e2e2bb, #d1cecd8b, #d5d2d193, #c4c0c199); /* Gradient background */
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 15px; /* Reduced padding */
-      transition: background-color 0.3s, opacity 0.5s ease, transform 0.5s ease;
-      position: relative;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: slideIn 0.5s forwards;
-    }
-    .ad-content:nth-child(1) {
-      animation-delay: 0.5s;
-    }
-    .ad-content:nth-child(2) {
-      animation-delay: 1s;
-    }
-    .ad-content:nth-child(3) {
-      animation-delay: 1.5s;
-    }
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .badge-img {
-      position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-    }
-    .product-img {
-      width: 70px; /* Adjusted width */
-      height: auto;
-      border-radius: 10px;
-      margin-right: 10px;
-    }
-    .ad-details {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 3px;
-    }
-    .ad-details p {
-      margin: 0;
-      font-size: 13px; /* Adjusted font size */
-      color: #333;
-    }
-    .ad-details .ad-title {
-      font-size: 15px; /* Adjusted font size */
-      font-weight: bold;
-      color: #000;
-    }
-    .floating-btn {
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 6px 12px; /* Reduced padding */
-      border-radius: 20px;
-      font-size: 14px;
-      cursor: pointer;
+      overflow: hidden;
+      z-index: 9999;
       display: flex;
       align-items: center;
-      gap: 10px;
-      transition: background-color 0.3s, transform 0.3s;
-      animation: pulse 1.5s infinite;
-      width: auto;
+      justify-content: space-between;
+      padding: 20px;
       box-sizing: border-box;
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for appearance and disappearance */
+      opacity: 0; /* Initially hidden */
+      transform: translateX(-50%) translateY(20px); /* Initially offset */
     }
-    .floating-btn i {
-      font-size: 18px;
+    .banner-ad-container.show {
+      opacity: 1; /* Visible */
+      transform: translateX(-50%) translateY(0); /* Default position */
     }
-    .floating-btn:hover {
-      background-color: #218838;
+    .banner-ad-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .banner-ad-content img {
+      height: 80px;
+      margin-right: 20px;
+      border-radius: 5px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .banner-ad-content img:hover {
       transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
-    .close-btn {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background-color: #e9dede;
-      color: black;
+    .banner-ad-text {
+      flex: 2;
+      color: #333; /* Dark text color for better contrast */
+    }
+    .banner-ad-text h1 {
+      margin: 0;
+      font-size: 22px; /* Adjusted font size */
+      color: #333; /* Dark text color */
+      line-height: 1.2;
+    }
+    .banner-ad-text p {
+      margin: 5px 0 0;
+      font-size: 16px; /* Adjusted font size */
+      color: #555; /* Medium dark text color */
+    }
+    .cta-button {
+      background-color: #ff6347; /* Tomato background color for button */
+      color: white;
       border: none;
-      padding: 4px 7px;
+      padding: 10px 20px;
       cursor: pointer;
-      border-radius: 50%;
-      font-size: 18px;
-      line-height: 1;
-      transition: background-color 0.3s;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+      font-size: 14px; /* Adjusted font size */
+      text-decoration: none; /* No underline */
     }
-    .close-btn:hover {
-      background-color: #d3d3d3;
+    .cta-button:hover {
+      background-color: #ff4500; /* Darker tomato color on hover */
+      transform: scale(1.05);
     }
-    .floating-btn-container::-webkit-scrollbar {
-      width: 0px;
-      background: transparent;
+    .close-button {
+      background-color: transparent;
+      color: #333; /* Dark color for close button */
+      border: none;
+      padding: 0px 4px;
+      cursor: pointer;
+      font-size: 28px; /* Adjusted font size */
+      position: absolute;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.739);
+      border-bottom-left-radius: 40%;
+      right: 0;
+      transition: color 0.3s, transform 0.3s;
     }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    .close-button:hover {
+      color: #ff4500; /* Match close button hover color with CTA button hover */
+     
     }
   </style>
   <script>
-    function closeAd(id) {
-      const adElement = document.getElementById(id);
-      adElement.style.opacity = '0';
-      adElement.style.transform = 'translateY(20px)';
+    function closeAd() {
+      const adElement = document.getElementById('bannerAd');
+      adElement.classList.remove('show');
       setTimeout(() => adElement.style.display = 'none', 500);
+    }
+
+    window.onload = () => {
+      const adElement = document.getElementById('bannerAd');
+      setTimeout(() => adElement.classList.add('show'), 100); // Delay for smooth appearance
     }
   </script>
 </head>
 <body>
 
-<div id="floating-ad-container" class="floating-btn-container">
-  <div id="ad1" class="ad-content">
-    <img src="./assets/ribbon.png" alt="Badge 1" class="badge-img">
-    <button class="close-btn" onclick="closeAd('ad1')">×</button>
-    <img src="https://img.freepik.com/free-vector/3d-french-fries-paper-box-isolated-background_107791-18370.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product 1" class="product-img">
-    <div class="ad-details">
-      <p class="ad-title">Limited Time Offer</p>
-      <p>Get 30% Off on French Fries!</p>
-      <button class="floating-btn">
-        <i class="fa fa-shopping-cart"></i> Shop Now
-      </button>
+<div class="banner-ad-container" id="bannerAd">
+  <div class="banner-ad-content">
+    <img src="https://img.freepik.com/premium-vector/sausage-vector-hotdog-bread-food-illustration-mustard-hot-american-fast-bun-design-meat_1013341-33705.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product Image">
+    <div class="banner-ad-text">
+      <h1>Special Offer!</h1>
+      <p>Get 20% off on your first purchase. Limited time offer.</p>
     </div>
+    <a href="https://amantechnologiesinc.com/" class="cta-button">Shop Now</a>
   </div>
-  <div id="ad2" class="ad-content">
-    <img src="./assets/ribbon.png" alt="Badge 2" class="badge-img">
-    <button class="close-btn" onclick="closeAd('ad2')">×</button>
-    <img src="https://img.freepik.com/premium-vector/vector-menu-illustration-food-meat-meal-restaurant-popular-set-lunch-icon-dinner-snack_1013341-43452.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product 2" class="product-img">
-    <div class="ad-details">
-      <p class="ad-title">New Arrivals</p>
-      <p>Fresh and Delicious Options!</p>
-      <button class="floating-btn">
-        <i class="fa fa-shopping-cart"></i> Shop Now
-      </button>
-    </div>
-  </div>
-  <div id="ad3" class="ad-content">
-    <img src="./assets/ribbon.png" alt="Badge 3" class="badge-img">
-    <button class="close-btn" onclick="closeAd('ad3')">×</button>
-    <img src="https://img.freepik.com/premium-vector/vector-menu-illustration-food-meat-meal-restaurant-popular-set-lunch-icon-dinner-snack_1013341-43452.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product 3" class="product-img">
-    <div class="ad-details">
-      <p class="ad-title">Subscribe & Save</p>
-      <p>Save 20% on your next meal!</p>
-      <button class="floating-btn">
-        <i class="fa fa-shopping-cart"></i> Shop Now
-      </button>
-    </div>
-  </div>
+  <button class="close-button" onclick="closeAd()">×</button>
 </div>
 
 </body>

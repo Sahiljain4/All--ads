@@ -43,6 +43,7 @@
       gap: 10px;
       transition: background-color 0.3s, transform 0.3s;
       animation: pulse 1.5s infinite;
+      text-decoration: none; /* Remove underline from hyperlink */
     }
     .floating-btn i {
       font-size: 20px;
@@ -101,10 +102,10 @@
 <div id="floating-ad-container" class="floating-btn-container">
   <button class="close-btn" onclick="closeAd()">×</button>
   <img src="https://img.freepik.com/free-vector/3d-french-fries-paper-box-isolated-background_107791-18370.jpg?ga=GA1.1.1050293293.1735555083&semt=ais_hybrid" alt="Product" class="product-img">
-  <button class="floating-btn">
+  <a href="https://amantechnologiesinc.com/" class="floating-btn">
     <i class="fa fa-shopping-cart"></i> Shop Now
     <div class="tooltip">Limited Time Offer - 30% Off!</div>
-  </button>
+  </a>
 </div>
 
 </body>
